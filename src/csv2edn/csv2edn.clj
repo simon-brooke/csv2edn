@@ -4,7 +4,7 @@
             [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.pprint :refer [pprint]]
-            [clojure.string :refer [lower-case]]))
+            [clojure.string :as s]))
 
 (def ^:dynamic *options*
   "Defaults for options used in conversion (essentially, `:separator` is `,`,
@@ -33,7 +33,9 @@
                   (csv/read-csv
                     reader
                     :separator (first (str sep)))))
-         headers (map #(keyword (lower-case %)) (first data))
+         headers (map #(keyword
+                         (s/replace (s/lower-case %) #"[^a-z0-9]" "-"))
+                      (first data))
          result (map
                   #(zipmap headers (map maybe-read %))
                   (rest data))]

@@ -1,36 +1,44 @@
 # csv2edn
 
-Simple command line utility to convert CSV files to EDN. Assumes the first row of a CSV file contains column headers.
+Simple command line utility and library to convert
+[comma-separated value (CSV)](https://tools.ietf.org/html/rfc4180) files to
+[extensible data notation (EDN)](https://github.com/edn-format/edn) or
+[javascript object notation (JSON)](https://www.json.org/json-en.html). Assumes
+the first row of a CSV file contains column headers.
 
 ## Installation
 
 [![Clojars Project](https://img.shields.io/clojars/v/csv2edn.svg)](https://clojars.org/csv2edn)
 
+**NOTE**: if the version numbers given below differ from the number in the
+image above, the image (which is automatically generated) is correct and
+this file (which is manually maintained) is in error.
+
 ### Leiningen/Boot
 
-[csv2edn "0.1.4"]
+[csv2edn "0.1.5"]
 
 ### Clojure CLI/deps.edn
 
-csv2edn {:mvn/version "0.1.4"}
+csv2edn {:mvn/version "0.1.5"}
 
 ### Gradle
 
-compile 'csv2edn:csv2edn:0.1.4'
+compile 'csv2edn:csv2edn:0.1.5'
 
 ### Maven
 
 <dependency>
   <groupId>csv2edn</groupId>
   <artifactId>csv2edn</artifactId>
-  <version>0.1.4</version>
+  <version>0.1.5</version>
 </dependency>
 
 ## Usage: as a standalone commandline tool
 
 To run from the command line:
 
-    $ java -jar csv2edn-0.1.4-standalone.jar [options]
+    $ java -jar csv2edn-0.1.5-standalone.jar [options]
 
 ### Options
 
@@ -51,17 +59,17 @@ Where options are:
 The simplest possible use is to simply use this in a pipeline:
 
     $ cat path/to/file.csv |\
-        java -jar csv2edn-0.1.4-standalone.jar > path/to/file.edn
+        java -jar csv2edn-0.1.5-standalone.jar > path/to/file.edn
 
 Exactly the same behaviour can be achieved by specifying input and output
 paths:
 
-    $ java -jar csv2edn-0.1.4-standalone.jar \
+    $ java -jar csv2edn-0.1.5-standalone.jar \
         -i path/to/file.csv -o path/to/file.edn
 
 or
 
-    $ java -jar csv2edn-0.1.4-standalone.jar \
+    $ java -jar csv2edn-0.1.5-standalone.jar \
         --input path/to/file.csv --output path/to/file.edn
 
 ## Usage: as a library
