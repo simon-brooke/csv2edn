@@ -1,10 +1,11 @@
-(defproject csv2edn "0.1.3"
+(defproject csv2edn "0.1.4"
   :description "Simple command line utility to convert CSV files to EDN."
   :url "https://github.com/simon-brooke/csv2edn"
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/data.csv "0.1.4"]
+                 [org.clojure/data.json "0.2.7"]
                  [org.clojure/tools.cli "0.4.2"]]
   :main ^:skip-aot csv2edn.core
   :target-path "target/%s"
