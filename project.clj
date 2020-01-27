@@ -1,4 +1,4 @@
-(defproject csv2edn "0.1.5-SNAPSHOT"
+(defproject csv2edn "0.1.5"
   :description "Simple command line utility to convert CSV files to EDN."
   :url "https://github.com/simon-brooke/csv2edn"
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
