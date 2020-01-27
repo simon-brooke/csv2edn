@@ -1,6 +1,6 @@
-(defproject csv2edn "0.1.1"
-  :description "Simple command line utility to convert CSV files to EDN"
-  :url "http://example.com/FIXME"
+(defproject csv2edn "0.1.2-SNAPSHOT"
+  :description "Simple command line utility to convert CSV files to EDN."
+  :url "https://github.com/simon-brooke/csv2edn"
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
