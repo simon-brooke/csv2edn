@@ -16,29 +16,29 @@ this file (which is manually maintained) is in error.
 
 ### Leiningen/Boot
 
-[csv2edn "0.1.5"]
+[csv2edn "0.1.6"]
 
 ### Clojure CLI/deps.edn
 
-csv2edn {:mvn/version "0.1.5"}
+csv2edn {:mvn/version "0.1.6"}
 
 ### Gradle
 
-compile 'csv2edn:csv2edn:0.1.5'
+compile 'csv2edn:csv2edn:0.1.6'
 
 ### Maven
 
 <dependency>
   <groupId>csv2edn</groupId>
   <artifactId>csv2edn</artifactId>
-  <version>0.1.5</version>
+  <version>0.1.6</version>
 </dependency>
 
 ## Usage: as a standalone commandline tool
 
 To run from the command line:
 
-    $ java -jar csv2edn-0.1.5-standalone.jar [options]
+    $ java -jar csv2edn-0.1.6-standalone.jar [options]
 
 ### Options
 
@@ -59,17 +59,17 @@ Where options are:
 The simplest possible use is to simply use this in a pipeline:
 
     $ cat path/to/file.csv |\
-        java -jar csv2edn-0.1.5-standalone.jar > path/to/file.edn
+        java -jar csv2edn-0.1.6-standalone.jar > path/to/file.edn
 
 Exactly the same behaviour can be achieved by specifying input and output
 paths:
 
-    $ java -jar csv2edn-0.1.5-standalone.jar \
+    $ java -jar csv2edn-0.1.6-standalone.jar \
         -i path/to/file.csv -o path/to/file.edn
 
 or
 
-    $ java -jar csv2edn-0.1.5-standalone.jar \
+    $ java -jar csv2edn-0.1.6-standalone.jar \
         --input path/to/file.csv --output path/to/file.edn
 
 ## Usage: as a library
