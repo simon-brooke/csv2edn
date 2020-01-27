@@ -21,5 +21,6 @@
                   ["vcs" "commit"]
                   ["clean"]
                   ["uberjar"]
+                  ["deploy" "clojars"]
                   ["change" "version" "leiningen.release/bump-version"]
                   ["vcs" "commit"]])
