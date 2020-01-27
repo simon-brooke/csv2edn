@@ -1,4 +1,4 @@
-(defproject csv2edn "0.1.1-SNAPSHOT"
+(defproject csv2edn "0.1.1"
   :description "Simple command line utility to convert CSV files to EDN"
   :url "http://example.com/FIXME"
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
