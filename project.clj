@@ -1,4 +1,4 @@
-(defproject csv2edn "0.1.0-SNAPSHOT"
+(defproject csv2edn "0.1.0"
   :description "Simple command line utility to convert CSV files to EDN"
   :url "http://example.com/FIXME"
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
@@ -8,7 +8,7 @@
                  [org.clojure/tools.cli "0.4.2"]]
   :main ^:skip-aot csv2edn.core
   :target-path "target/%s"
-  :plugins [[lein-codox "0.10.7-multilang"]
+  :plugins [[lein-codox "0.10.7"]
             [lein-kibit "0.1.6"]
             [lein-release "1.0.5"]]
   :profiles {:uberjar {:aot :all}}
