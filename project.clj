@@ -1,4 +1,4 @@
-(defproject csv2edn "0.1.2"
+(defproject csv2edn "0.1.3-SNAPSHOT"
   :description "Simple command line utility to convert CSV files to EDN."
   :url "https://github.com/simon-brooke/csv2edn"
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
@@ -13,13 +13,17 @@
             [lein-release "1.0.5"]]
   :profiles {:uberjar {:aot :all}}
 
+  :deploy-repositories [["releases" :clojars]
+                        ["snapshots" :clojars]]
+
   ;; `lein release` doesn't play nice with `git flow release`. Run `lein release` in the
   ;; `develop` branch, then reset the `master` branch to the release tag.
 
   :release-tasks [["vcs" "assert-committed"]
+                  ["clean"]
+                  ["codox"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
                   ["vcs" "commit"]
-                  ["clean"]
                   ["uberjar"]
                   ["deploy" "clojars"]
                   ["change" "version" "leiningen.release/bump-version"]
