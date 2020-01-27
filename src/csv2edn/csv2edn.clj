@@ -16,7 +16,8 @@
   integer or real in our data rather than a string representation of it."
   [^String s]
   (try
-    (read-string s)
+    (let [v (read-string s)]
+      (if (number? v) v s))
     (catch Exception _ s)))
 
 (defn csv->edn
