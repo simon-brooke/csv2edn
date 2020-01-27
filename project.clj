@@ -13,8 +13,6 @@
             [lein-release "1.0.5"]]
   :profiles {:uberjar {:aot :all}}
 
-  :lein-release {:deploy-via :clojars}
-
   ;; `lein release` doesn't play nice with `git flow release`. Run `lein release` in the
   ;; `develop` branch, then reset the `master` branch to the release tag.
 

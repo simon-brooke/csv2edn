@@ -1,10 +1,14 @@
-(ns csv2edn.csv2edn
+(ns ^{:doc "Conversion from CVS to EDN."
+      :author "Simon Brooke"} csv2edn.csv2edn
   (:require [clojure.data.csv :as csv]
             [clojure.java.io :as io]
             [clojure.pprint :refer [pprint]]
             [clojure.string :refer [lower-case]]))
 
-(def ^:dynamic *options* {:separator \,})
+(def ^:dynamic *options*
+  "Defaults for options used in conversion (essentially, `:separator` is `,`,
+  much as you'd expect."
+  {:separator \,})
 
 (defn maybe-read
   "If a string represents an integer or real, we'd really like to have that
@@ -14,19 +18,29 @@
     (read-string s)
     (catch Exception _ s)))
 
-(defn csv2edn
-  "Read a CSV stream from the reader or filename `in`, and write corresponding
-  EDN to the reader or filname `out`. Assume column headers are in row 1"
-  [from to]
+(defn csv->edn
+  "Read a CSV stream from the reader or filename `from`, and write corresponding
+  EDN to the reader or filname `to`, using the separator character `sep`. Assume
+  column headers are in row 1. If `from` is `nil` or not supplied, do not write.
+  It `sep` is not supplied, take the `:separator` value from `*options*`. Returns
+  a (possibly-lazy) sequence of maps."
+  ([from] (csv->edn from nil))
+  ([from to] (csv->edn from to (:separator *options*)))
+  ([from to sep]
   (let [data (with-open [reader (if (string? from)(io/reader from) from)]
                (doall
                  (csv/read-csv
                    reader
-                   :separator (:separator *options*))))
+                   :separator (first (str sep)))))
         headers (map #(keyword (lower-case %)) (first data))]
-    (with-open [writer (if (string? to) (io/writer to) to)]
-      (pprint
-        (map
-          #(zipmap headers (map maybe-read %))
-          (rest data))
-        writer))))
+    (let [result (map
+                   #(zipmap headers (map maybe-read %))
+                   (rest data))]
+      (if to
+        (with-open [writer (if (string? to) (io/writer to) to)]
+        (pprint
+          result
+          writer)))
+      result))))
+
+
