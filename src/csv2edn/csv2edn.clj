@@ -14,9 +14,16 @@
 (defn maybe-read
   "If a string represents an integer or real, we'd really like to have that
   integer or real in our data rather than a string representation of it."
+  ;; TODO: this is actually quite difficult and the current solution won't
+  ;; correctly handle numbers in scientific notation, ratios, or imaginary
+  ;; numbers.
   [^String s]
   (try
-    (read-string s)
+    (if
+      (re-matches #"^ *[+-]?[0-9]*\.?[0-9]*" s)
+      (let [v (read-string s)]
+        (if (number? v) v s))
+      s)
     (catch Exception _ s)))
 
 (defn csv->edn
